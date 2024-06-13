@@ -1,3 +1,68 @@
+# [1.0.0](https://github.com/FrancisDrakeK/zfs_exporter/compare/0.0.0...v1.0.0) (2024-06-13)
+
+
+### Bug Fixes
+
+* **build:** Tag correct commit SHA ([0712333](https://github.com/FrancisDrakeK/zfs_exporter/commit/0712333))
+* **build:** Update deps ([ddf8e09](https://github.com/FrancisDrakeK/zfs_exporter/commit/ddf8e09))
+* **build:** update go module version to match release tag major version ([f709083](https://github.com/FrancisDrakeK/zfs_exporter/commit/f709083))
+* **build:** Update promu config to build v2 ([2a38914](https://github.com/FrancisDrakeK/zfs_exporter/commit/2a38914))
+* **build:** Update to Go 1.17 for crossbuild, and enable all platforms ([f47b69a](https://github.com/FrancisDrakeK/zfs_exporter/commit/f47b69a))
+* **ci:** Fix syntax error in github actions workflow ([0b6e8bc](https://github.com/FrancisDrakeK/zfs_exporter/commit/0b6e8bc))
+* **collector:** Avoid race on upstream channel close, tidy sync points ([e6fbdf5](https://github.com/FrancisDrakeK/zfs_exporter/commit/e6fbdf5))
+* **core:** Correctly handle and report errors listing pools ([efbcceb](https://github.com/FrancisDrakeK/zfs_exporter/commit/efbcceb)), closes [#18](https://github.com/FrancisDrakeK/zfs_exporter/issues/18)
+* **core:** Update dependencies ([b39382b](https://github.com/FrancisDrakeK/zfs_exporter/commit/b39382b))
+* **deps:** Bump deps for security ([1404536](https://github.com/FrancisDrakeK/zfs_exporter/commit/1404536))
+* **docs:** Correct misspelling ([066c7d2](https://github.com/FrancisDrakeK/zfs_exporter/commit/066c7d2))
+* **docs:** Document web.disable-exporter-metrics flag in README ([20182da](https://github.com/FrancisDrakeK/zfs_exporter/commit/20182da))
+* **log:** Improve command execution error output ([2277832](https://github.com/FrancisDrakeK/zfs_exporter/commit/2277832))
+* **logging:** Include collector in warning for unsupported properties ([1760a4a](https://github.com/FrancisDrakeK/zfs_exporter/commit/1760a4a))
+* **metrics:** Fix typo in metric name ([bbd3d91](https://github.com/FrancisDrakeK/zfs_exporter/commit/bbd3d91))
+* **metrics:** Invert ratio for multiplier fields, and clarify their docs ([1a7bc3a](https://github.com/FrancisDrakeK/zfs_exporter/commit/1a7bc3a)), closes [#11](https://github.com/FrancisDrakeK/zfs_exporter/issues/11)
+* **pool:** Add SUSPENDED status ([9b9e655](https://github.com/FrancisDrakeK/zfs_exporter/commit/9b9e655))
+* **security:** Update dependencies for upstream vulnerabilities ([2220da2](https://github.com/FrancisDrakeK/zfs_exporter/commit/2220da2))
+* **tests:** Remove unnecessary duration conversion ([b6a29ab](https://github.com/FrancisDrakeK/zfs_exporter/commit/b6a29ab))
+* **transform:** Add support for ancient ZFS dedupratio metric ([85bdc3b](https://github.com/FrancisDrakeK/zfs_exporter/commit/85bdc3b)), closes [#26](https://github.com/FrancisDrakeK/zfs_exporter/issues/26)
+* **transform:** Add support for ancient ZFS fragmentation metric ([a0240d1](https://github.com/FrancisDrakeK/zfs_exporter/commit/a0240d1)), closes [#26](https://github.com/FrancisDrakeK/zfs_exporter/issues/26)
+* fix copy and paste errors when accessing dataset properties ([c0fc6b2](https://github.com/FrancisDrakeK/zfs_exporter/commit/c0fc6b2))
+
+
+### Code Refactoring
+
+* **collector:** Migrate to internal ZFS CLI implementation ([53b0e98](https://github.com/FrancisDrakeK/zfs_exporter/commit/53b0e98)), closes [#7](https://github.com/FrancisDrakeK/zfs_exporter/issues/7) [#9](https://github.com/FrancisDrakeK/zfs_exporter/issues/9) [#10](https://github.com/FrancisDrakeK/zfs_exporter/issues/10)
+* **core:** Update prometheus toolchain and refactor internals ([056b386](https://github.com/FrancisDrakeK/zfs_exporter/commit/056b386))
+
+
+### Features
+
+* **build:** Update to Go 1.17 ([b64115c](https://github.com/FrancisDrakeK/zfs_exporter/commit/b64115c))
+* **enhancement:** Allow excluding datasets by regular expression ([8dd48ba](https://github.com/FrancisDrakeK/zfs_exporter/commit/8dd48ba)), closes [#3](https://github.com/FrancisDrakeK/zfs_exporter/issues/3)
+* **metrics:** Allow disabling exporter metrics ([1ca8717](https://github.com/FrancisDrakeK/zfs_exporter/commit/1ca8717)), closes [#2](https://github.com/FrancisDrakeK/zfs_exporter/issues/2)
+* **performance:** Execute collection concurrently per pool ([ccc6f22](https://github.com/FrancisDrakeK/zfs_exporter/commit/ccc6f22))
+* **server:** Add exporter toolkit for TLS support ([8102e2e](https://github.com/FrancisDrakeK/zfs_exporter/commit/8102e2e)), closes [#34](https://github.com/FrancisDrakeK/zfs_exporter/issues/34)
+* **zfs:** Add local ZFS CLI parsing ([f5050b1](https://github.com/FrancisDrakeK/zfs_exporter/commit/f5050b1))
+
+
+### BREAKING CHANGES
+
+* **collector:** Ratio values are now properly calculated in the range
+0-1, rather than being passed verbatim.
+
+The following metrics are affected by this change:
+- zfs_pool_deduplication_ratio
+- zfs_pool_capacity_ratio
+- zfs_pool_fragmentation_ratio
+- zfs_dataset_compression_ratio
+- zfs_dataset_referenced_compression_ratio
+
+Additionally, the zfs_dataset_fragmentation_percent metric has been
+renamed to zfs_dataset_fragmentation_ratio.
+* **core:** Go API has changed somewhat, but metrics remain
+unaffected.
+
+
+
+
 ## [2.3.4](https://github.com/pdf/zfs_exporter/compare/v2.3.3...v2.3.4) (2024-04-13)
 
 

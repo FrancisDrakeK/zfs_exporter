@@ -1,3 +1,8 @@
+## [0.0.2](https://github.com/FrancisDrakeK/zfs_exporter/compare/v0.0.1...v0.0.2) (2024-06-13)
+
+
+
+
 # [1.0.0](https://github.com/FrancisDrakeK/zfs_exporter/compare/0.0.0...v1.0.0) (2024-06-13)
 
 
